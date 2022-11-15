@@ -43,17 +43,13 @@ RUN \
 	python3 -m pip install --user $(cat /tmp/pydeps.txt) \
     && rm -rf /tmp/*
 
-FROM stage_deps stage_whisper
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+LABEL title="Whisper-Container"
+LABEL version="0.0.1"
 
-ENV \
-    DEBIAN_FRONTEND=noninteractive \
-    LANG=C.UTF-8 \
-    LC_ALL=C.UTF-8
+CMD [ "/usr/local/bin/entrypoint.sh" ]
 
-RUN \
-    pip3 install --user git+https://github.com/openai/whisper.git
-
-
-# DOCKER_BUILDKIT=1 docker build --no-cache -t kestr3l/whisper-container:0.0.1 .
+# DOCKER_BUILDKIT=1 \
+# docker build --no-cache \
+# -t kestr3l/whisper-container:0.0.1 .
