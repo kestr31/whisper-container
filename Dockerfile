@@ -52,4 +52,7 @@ CMD [ "/usr/local/bin/entrypoint.sh" ]
 
 # DOCKER_BUILDKIT=1 \
 # docker build --no-cache \
-# -t kestr3l/whisper-container:0.0.1 .
+# --build-arg BASEIMAGE=nvidia/cuda \
+# --build-arg BASETAG=11.7.0-devel-ubuntu22.04 \
+# -t kestr3l/whisper-container:0.0.1 \
+# -f Dockerfile .
