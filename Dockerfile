@@ -1,7 +1,7 @@
 ARG BASEIMAGE
 ARG BASETAG
 
-# nvidia/cuda:11.7.0-devel-ubuntu22.04
+# nvidia/cuda:11.6.1-devel-ubuntu22.04
 
 FROM ${BASEIMAGE}:${BASETAG} as stage_apt
 
@@ -40,7 +40,7 @@ RUN \
 COPY pydeps.txt /tmp/pydeps.txt
 
 RUN \
-	python3 -m pip install --user $(cat /tmp/pydeps.txt) \
+	pip3 install $(cat /tmp/pydeps.txt) \
     && rm -rf /tmp/* \
     && mkdir /root/workspace
 
@@ -56,10 +56,10 @@ CMD [ "/usr/local/bin/entrypoint.sh" ]
 # DOCKER_BUILDKIT=1 \
 # docker build --no-cache \
 # --build-arg BASEIMAGE=nvidia/cuda \
-# --build-arg BASETAG=11.7.0-devel-ubuntu22.04 \
+# --build-arg BASETAG=11.6.1-devel-ubuntu22.04 \
 # -t kestr3l/whisper-container:0.0.1 \
 # -f Dockerfile .
 
 # docker run -it --rm --gpus all \
 # -v /home/merlin/test.m4a:/root/workspace/test.m4a \
-# kestr3l/whisper-container:0.0.1 \
+# kestr3l/whisper-container:0.0.1
