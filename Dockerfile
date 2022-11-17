@@ -41,9 +41,12 @@ COPY pydeps.txt /tmp/pydeps.txt
 
 RUN \
 	python3 -m pip install --user $(cat /tmp/pydeps.txt) \
-    && rm -rf /tmp/*
+    && rm -rf /tmp/* \
+    && mkdir /root/workspace
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+
+WORKDIR /root/workspace
 
 LABEL title="Whisper-Container"
 LABEL version="0.0.1"
@@ -56,3 +59,7 @@ CMD [ "/usr/local/bin/entrypoint.sh" ]
 # --build-arg BASETAG=11.7.0-devel-ubuntu22.04 \
 # -t kestr3l/whisper-container:0.0.1 \
 # -f Dockerfile .
+
+# docker run -it --rm --gpus all \
+# -v /home/merlin/test.m4a:/root/workspace/test.m4a \
+# kestr3l/whisper-container:0.0.1 \
