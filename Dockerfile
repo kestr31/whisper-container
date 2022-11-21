@@ -64,17 +64,17 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 WORKDIR /root/workspace
 
 LABEL title="Whisper-Container"
-LABEL version="0.0.1"
+LABEL version="0.0.2"
 
 CMD [ "/usr/local/bin/entrypoint.sh" ]
 
 # DOCKER_BUILDKIT=1 \
 # docker build --no-cache \
 # --build-arg BASEIMAGE=nvidia/cuda \
-# --build-arg BASETAG=11.6.1-devel-ubuntu22.04 \
-# -t kestr3l/whisper-container:0.0.1 \
+# --build-arg BASETAG=11.4.1-devel-ubuntu20.04 \
+# -t kestr3l/whisper-container:0.0.2 \
 # -f Dockerfile .
 
 # docker run -it --rm --gpus all \
-# -v /home/merlin/test.m4a:/root/workspace/test.m4a \
-# kestr3l/whisper-container:0.0.1
+# -v ${HOME}/workspace:/root/workspace/test.m4a \
+# kestr3l/whisper-container:0.0.2
