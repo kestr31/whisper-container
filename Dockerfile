@@ -41,8 +41,23 @@ COPY pydeps.txt /tmp/pydeps.txt
 
 RUN \
 	pip3 install $(cat /tmp/pydeps.txt) \
-    && rm -rf /tmp/* \
-    && mkdir /root/workspace
+    && rm -rf /tmp/*
+
+RUN \
+    mkdir /root/workspace \
+    && mkdir -p /root/.cache/whisper \
+    && curl -L -O -C - \
+        https://openaipublic.azureedge.net/main/whisper/models/e4b87e7e0bf463eb8e6956e646f1e277e901512310def2c24bf0e11bd3c28e9a/large.pt \
+        > /root/.cache/whisper/large.pt \
+    && curl -L -O -C - \
+        https://openaipublic.azureedge.net/main/whisper/models/345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1/medium.pt \
+        > /root/.cache/whisper/medium.pt \
+    && curl -L -O -C - \
+        https://openaipublic.azureedge.net/main/whisper/models/9ecf779972d90ba49c06d968637d720dd632c55bbf19d441fb42bf17a411e794/small.pt \
+        > /root/.cache/whisper/small.pt \
+    && curl -L -O -C - \
+        https://openaipublic.azureedge.net/main/whisper/models/65147644a518d12f04e32d6f3b26facc3f8dd46e5390956a9424a650c0ce22b9/tiny.pt \
+        > /root/.cache/whisper/tiny.pt \
 
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 

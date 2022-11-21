@@ -1,3 +1,4 @@
+curl
 ffmpeg
 git
 pip

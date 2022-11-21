@@ -1,12 +1,13 @@
 #! /bin/sh
 
-whisper \
-    --model large \
-    --output_dir /root/workspace \
-    --task transcribe \
-    --language ko \
-    ./target.m4a
-
+# Further work should made:
+# Automatic processing using inotiy
+# whisper \
+#     --model large \
+#     --output_dir /root/workspace \
+#     --task transcribe \
+#     --language en \
+#     ./target.m4a
 
 # usage: whisper [-h] [--model {tiny.en,tiny,base.en,base,small.en,small,medium.en,medium,large}]
 # [--model_dir MODEL_DIR] [--device DEVICE] [--output_dir OUTPUT_DIR] [--verbose VERBOSE]
