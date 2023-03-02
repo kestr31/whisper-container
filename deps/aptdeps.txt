@@ -1,0 +1,7 @@
+curl
+git
+neovim
+python3
+python3-pip
+wget
+ffmpeg
