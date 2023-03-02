@@ -1,5 +1,0 @@
-curl
-ffmpeg
-git
-pip
-python3
