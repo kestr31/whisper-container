@@ -76,9 +76,9 @@ FROM stage_deps as stage_app
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Build Argument
-## TAGET_MODEL : TARGET OPENAI WHISPER MODEL TO DOWNLOAD
+## TARGET_MODEL : TARGET OPENAI WHISPER MODEL TO DOWNLOAD
 ## CHECK https://github.com/openai/whisper/blob/main/whisper/__init__.py
-ARG TAGET_MODEL
+ARG TARGET_MODEL
 
 ENV \
     DEBIAN_FRONTEND=noninteractive \
@@ -118,7 +118,7 @@ CMD [ "/usr/local/bin/entrypoint.sh" ]
 # docker build --no-cache \
 # --build-arg BASEIMAGE=nvidia/cuda \
 # --build-arg BASETAG=11.7.1-devel-ubuntu22.04 \
-# --build-arg TAGET_MODEL=large-v2 \
+# --build-arg TARGET_MODEL=large-v2 \
 # -t kestr3l/whisper-container:0.0.3-large-v2 \
 # -f Dockerfile .
 
